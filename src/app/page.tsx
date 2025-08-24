@@ -15,12 +15,7 @@ export default function Home() {
 
   return (
     <Providers>
-      <Header>
-        <BtnUrl url={"/create-task"} icon={ <MdCreate /> } bgColor={"bg-transparent"} style={"p-1"} />
-      </Header>
-      <main>
-        <ListTasks />
-      </main>
+      <ListTasks />
     </Providers>
   );
 }
