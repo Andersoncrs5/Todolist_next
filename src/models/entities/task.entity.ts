@@ -2,7 +2,7 @@ export interface TaskEntity {
     id: string
     name: string
     description: string
-    IsComplete: string
+    isComplete: boolean
     createdAt: Date
     updatedAt: Date | undefined
 }
