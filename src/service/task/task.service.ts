@@ -44,8 +44,19 @@ export default class TaskService {
 
             return response.data
         } catch(err) {
-            console.log("error the create new task!\nError: " + err)
+            console.log("error the delete task!\nError: " + err)
             throw err
+        }
+    }
+
+    async changeStatus(id: string): Promise<ResponseBody<TaskEntity>> {
+        try {
+            const response: AxiosResponse<ResponseBody<TaskEntity>, any> = await api.get<ResponseBody<TaskEntity>>(`${this.url}/change/${id}`)
+
+            return response.data
+        } catch(err: any) {
+            console.log("error the change status task!\nError: " + err)
+            return err
         }
     }
 
