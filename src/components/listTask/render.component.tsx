@@ -10,6 +10,7 @@ import { IoIosArrowBack  } from "react-icons/io";
 import { GrFormNext } from "react-icons/gr";
 import Pagination from "../pagination/render"
 import ShowAlert from "../showAlert/render"
+import { RxUpdate } from "react-icons/rx";
 
 export default function ListTasks() {
     const { 
@@ -22,12 +23,17 @@ export default function ListTasks() {
         query,
         setQuery,
         alert,
-        msg
+        msg,
+        colorAlert,
+        colorTextAlert,
+        colorBorderAlert,
+        updateTask
     } = UseListTasks()
 
     return (
         <>
-            {alert && <ShowAlert msg={msg} bgStyle={"bg-transparent"} textStyle={"text-white"}  /> }
+            {alert && <ShowAlert msg={msg} bgStyle={colorAlert} textStyle={colorTextAlert} border={colorBorderAlert}  /> }
+            
             {load ? (
                 <div className="flex justify-center items-center min-h-screen">
                     <div className="loader"></div>
@@ -41,16 +47,17 @@ export default function ListTasks() {
                                     <div className="basis-2/8 text-center">
                                         <p>{task.name}</p>
                                     </div>
-                                    <div className="basis-3/8 text-center">
+                                    <div className="basis-4/8 text-center">
                                         <p>{task.description}</p>
                                     </div>
-                                    <div className="basis-2/8">
-                                        <p>{task.IsComplete ? 'no completed' : 'completed'}</p>
+                                    <div className="basis-1/8">
+                                        <p>{task.isComplete ? 'completed' : 'no completed'}</p>
                                     </div>
                                     <div className="basis-1/8 text-center">
                                         <ActionMenu>
                                             <Btn icon={<FaTrash />} funcClick={() => deleteTask(task.id)} margin={"my-2"} /> <br />
                                             <Btn icon={<FaExchangeAlt />} funcClick={() => changeStatus(task.id)} margin={"my-2"} />
+                                            <Btn icon={<RxUpdate />} funcClick={() => updateTask(task.id)} margin={"my-2"} />
                                         </ActionMenu>
                                     </div>
                                 </div>
