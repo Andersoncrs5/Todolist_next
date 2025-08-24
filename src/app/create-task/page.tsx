@@ -40,8 +40,8 @@ export default function CreateTask() {
                     <div className="flex flex-col gap-6">
                         <div className="flex flex-col">
                             <CustomInput 
-                                // min={5}
-                                // max={50}
+                                min={5}
+                                max={50}
                                 value={name}
                                 nameLabel={"Título"}
                                 onChange={(e) => setName(e.target.value)}
