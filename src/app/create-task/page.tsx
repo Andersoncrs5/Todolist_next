@@ -46,8 +46,8 @@ export default function CreateTask() {
                                 nameLabel={"Título"}
                                 onChange={(e) => setName(e.target.value)}
                                 type={"text"}
-                                placeholder="Escreva o título da tarefa"
-                                border="border-white border" 
+                                placeholder="White your title"
+                                border="border-white border w-[100%]" 
                                 required={true}
                             />
                         </div>
