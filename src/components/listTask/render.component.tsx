@@ -6,19 +6,28 @@ import Btn from "../buttons/btn.component"
 import { FaTrash } from "react-icons/fa"
 import UseListTasks from "./service.listTask"
 import { FaExchangeAlt } from "react-icons/fa";
-
+import { IoIosArrowBack  } from "react-icons/io";
+import { GrFormNext } from "react-icons/gr";
+import Pagination from "../pagination/render"
+import ShowAlert from "../showAlert/render"
 
 export default function ListTasks() {
     const { 
         tasks, 
         deleteTask,
         changeStatus,
+        load,
+        backPage,
+        nextPage,
+        query,
         setQuery,
-        load
+        alert,
+        msg
     } = UseListTasks()
 
     return (
         <>
+            {alert && <ShowAlert msg={msg} bgStyle={"bg-transparent"} textStyle={"text-white"}  /> }
             {load ? (
                 <div className="flex justify-center items-center min-h-screen">
                     <div className="loader"></div>
@@ -48,12 +57,14 @@ export default function ListTasks() {
                             ))
                         ) : (
                             <div className="flex justify-center items-center min-h-screen">
-                                <h1>NO TASKS</h1>
+                                <h1 className="text-white" >NO TASKS</h1>
                             </div>
                         )}
-                    </div>
-                    <div>
-                        {/* paginacao */}
+                        <Pagination 
+                            tasks={tasks}
+                            backPage={backPage}
+                            nextPage={nextPage}
+                        />
                     </div>
                 </>
             )}
