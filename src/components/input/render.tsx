@@ -7,6 +7,7 @@ type InputType =
   | 'hidden'
   | 'time'
   | 'url'
+  | 'date'
 
 interface CustomInputProps {
   value: string;
@@ -19,13 +20,13 @@ interface CustomInputProps {
   max?: number
   min?: number
   border?: string
-  required: boolean
+  required?: boolean
 }
 
-const CustomInput: React.FC<CustomInputProps> = ({ required = true, border ,min = 0 ,max = 0, nameLabel = '' ,id = '' ,value, onChange, placeholder = '', type = 'text', more = '' }) => {
+const CustomInput: React.FC<CustomInputProps> = ({ required = false, border ,min = 0 ,max = 0, nameLabel = '' ,id = '' ,value, onChange, placeholder = '', type = 'text', more = '' }) => {
   return (
     <div>
-      <label htmlFor={nameLabel}>{nameLabel || 'NO NAME' }</label>
+      <label htmlFor={nameLabel}>{nameLabel}</label>
       <input
         type={type}
         id={id}
@@ -33,7 +34,7 @@ const CustomInput: React.FC<CustomInputProps> = ({ required = true, border ,min 
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`${border} rounded px-3 py-2 w-[100%] outline-none focus:ring-2 focus:ring-blue-500 ${more}`}
+        className={`${border} rounded px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500 ${more}`}
         required={required}
         maxLength={max == 0 ? 99999 : max }
         minLength={min == 0 ? 1 : min }
