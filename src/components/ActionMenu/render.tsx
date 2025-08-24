@@ -23,7 +23,7 @@ export default function ActionMenu({ children }: ActionMenuProps) {
             </button>
 
             {isOpen && (
-                <div className="absolute right-0 m-2 w-48 bg-gray-800 rounded-md shadow-lg py-1 z-10">
+                <div className="absolute right-0 m-2 w-38 bg-transparent border border-white border-1 rounded-md shadow-lg py-1 z-10">
                     {children}
                 </div>
             )}
